@@ -22,6 +22,7 @@
                 <Setter Property="BackgroundColor" Value="LightGray"/>
                 <Setter Property="TextColor" Value="{StaticResource P_WhiteColor}"/>
                 <Setter Property="FontSize" Value="26"/>
+                <Setter Property="IsEnabled" Value="False"/>
                 <!--<Setter Property="FontAttributes" Value="Bold"/>-->
 
             </Style>

@@ -20,7 +20,10 @@ namespace MBlogApp.Converters
 		public object ConvertBack(object value, Type targetType,
 			object parameter, CultureInfo culture)
 		{
-			throw new NotSupportedException();
+			if ((int)value > 3)
+				return true;    // data has been entered
+			else
+				return false;   // input is empty
 		}
 	}
 }
