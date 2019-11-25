@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodel="clr-namespace:MBlogApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="MBlogApp.Views.RegisterPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <viewmodel:RegisterPageViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout HeightRequest="50"
+                    />
+                <Image x:Name="Img_Logo" Source="logo_trans.png" 
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"
+                       HeightRequest="120"
+                       WidthRequest="120"
+                   />
+                <Label Text="ErrorEmailMessage" 
+                   TextColor="Red"
+                   Margin="40,0"
+                   IsVisible="False"/>
+                <Frame>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="EMAIL"
+                            Margin="10,0"/>
+                        <Entry  IsPassword="False"
+                             Margin="10,0"/>
+                    </StackLayout>
+                </Frame>
+                <Label Text="ErrorPasswordMessage" 
+                   TextColor="Red"
+                    Margin="40,0"
+                   IsVisible="False"/>
+                <Frame>
+                    <StackLayout Orientation="Vertical" Spacing="0">
+                        <Label Text="PASSWORD" 
+                           Margin="10,0"/>
+                        <Entry  IsPassword="True"
+                             Margin="10,0"/>
+                    </StackLayout>
+                </Frame>
+                <Label Text="ErrorConfirmPasswordMessage" 
+                   TextColor="Red"
+                    Margin="40,0"
+                   IsVisible="False"/>
+                <Frame>
+                    <StackLayout Orientation="Vertical" Spacing="0">
+                        <Label Text="CONFIRM PASSWORD" 
+                           Margin="10,0"/>
+                        <Entry  IsPassword="True"
+                             Margin="10,0"/>
+                    </StackLayout>
+                </Frame>
+                <Button Text="REGISTER" 
+                    HeightRequest="65"
+                    Margin="40,20,40,5"
+                    />
+
+                <Label Text="LOG IN"                  
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="EndAndExpand"
+                   FontAttributes="None"
+                   FontSize="Medium"
+                       Margin="0,15">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackPageCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

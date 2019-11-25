@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MBlogApp.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="P_PimaryColor">#1C6B68</Color>
+            <Color x:Key="P_PimaryMainColor">#1A6B69</Color>
+            <Color x:Key="P_WhiteColor">#FFFFFF</Color>
+            <Style TargetType="Frame" >
+                <Setter Property="Margin" Value="40,2" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="BorderColor" Value="Gray" />
+                <Setter Property="Padding" Value="0" />
+
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="40,0"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource P_PimaryMainColor}"/>
+                <Setter Property="TextColor" Value="{StaticResource P_WhiteColor}"/>
+                <Setter Property="FontSize" Value="26"/>
+                <!--<Setter Property="FontAttributes" Value="Bold"/>-->
+
+            </Style>
+            <Style TargetType="Label" >
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="{StaticResource P_PimaryMainColor}"/>
+                <Setter Property="FontSize" Value="18"/>
+                <!--<Setter Property="Margin" Value="20,10" />-->
+                <!--<Setter Property="TextDecorations" Value="Underline" />
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>-->
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="TextColor" Value="{StaticResource P_PimaryMainColor}"/>
+                <Setter Property="Margin" Value="0" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
