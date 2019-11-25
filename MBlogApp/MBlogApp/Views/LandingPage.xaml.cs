@@ -15,14 +15,33 @@ namespace MBlogApp.Views
 		 public LandingPage()
 		{
 			InitializeComponent();
-			Test();
-		 	Task.Delay(3000);
-            Navigation.PushAsync( new LogInPage());
+			//Task.Delay(1000);
+			//ActionImage();
+		
+			
 		}
-		private async void Test()
+		private async void ActionImage()
 		{
-			Img_Logo.Opacity = 1;
-			await Img_Logo.FadeTo(25, 4000);			
+			//Img_Logo.Opacity = 1;
+			//await Img_Logo.TranslateTo(100, 100, 2500, Easing.BounceIn);
+			await Img_Logo.FadeTo(1, 4000);
+			await Task.Delay(1000);
+			await Navigation.PushAsync(new LogInPage());
+						
+		}
+		private async void ActionImageDefalut()
+		{
+			//Img_Logo.Opacity = 1;
+			//await Img_Logo.TranslateTo(100, 100, 2500, Easing.BounceIn);
+			//await Img_Logo.FadeTo(1, 4000);
+			await Task.Delay(1000);
+			await Navigation.PushAsync(new LogInPage());
+
+		}
+		protected override void OnAppearing()
+        {
+			base.OnAppearing();
+			ActionImage();
 		}
 	}
 }

@@ -11,7 +11,8 @@
             <Image x:Name="Img_Logo" Source="logo_trans.png" 
                    VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand"
-                   Opacity="0"/>
+                   Opacity ="0"
+                  />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

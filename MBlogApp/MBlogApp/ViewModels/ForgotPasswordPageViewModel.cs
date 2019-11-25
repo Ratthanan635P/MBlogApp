@@ -19,6 +19,7 @@ namespace MBlogApp.ViewModels
 			RegisterCommand = new Command(GotoRegisterPage);
 			BackPageCommand = new Command(BackPage);
 			SendEmailCommand=new Command(SendEmailPage);
+			
 		}
 		private async void GotoForgotPage()
 		{

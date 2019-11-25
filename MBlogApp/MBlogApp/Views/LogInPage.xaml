@@ -4,14 +4,23 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewmodel="clr-namespace:MBlogApp.ViewModels"
+             xmlns:local="clr-namespace:MBlogApp.Converters"
              mc:Ignorable="d"
              x:Class="MBlogApp.Views.LogInPage"
              NavigationPage.HasNavigationBar="False"
             >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:MultiTriggerConverter x:Key="dataHasBeenEntered" />
+            <local:PasswordTriggerConverter x:Key="dataHasPassword" />
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.BindingContext>
         <viewmodel:LogInPageViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
+       
         <ScrollView>
         <StackLayout>
                 <StackLayout HeightRequest="50"
@@ -20,16 +29,20 @@
                    VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand"
                    />
-            <Label Text="ErrorEmailMessage" 
+            <Label 
                    TextColor="Red"
                    Margin="40,0"
+                   Text="{Binding LogInModel.ErrorMessage}"
                    IsVisible="False"/>
             <Frame>
                     <StackLayout Orientation="Vertical" Spacing="0">
                     <Label Text="EMAIL"
                             Margin="10,0"/>
-                    <Entry  IsPassword="False"
-                             Margin="10,0"/>
+                    <Entry x:Name="EntryEmail"  IsPassword="False"
+                             Margin="10,0"
+                            ReturnType="Next"
+                           Text="{Binding LogInModel.Email}"
+                            />
                 </StackLayout>
             </Frame>
             <Label Text="ErrorPasswordMessage" 
@@ -40,15 +53,34 @@
                 <StackLayout Orientation="Vertical" Spacing="0">
                     <Label Text="PASSWORD" 
                            Margin="10,0"/>
-                    <Entry  IsPassword="True"
-                             Margin="10,0"/>
+                        <Entry  x:Name="EntryPassword" IsPassword="True"
+                             Margin="10,0"
+                                Text="{Binding LogInModel.Password}"
+                            ReturnType="Done"
+                          />
                 </StackLayout>
             </Frame>
-            <Button Text="Log In" 
+                <Button Text="Log In" 
                     HeightRequest="65"
                     Margin="40,20,40,5"
-                    
-                    />
+                        IsEnabled="False">
+                    <Button.Triggers>
+                        <MultiTrigger TargetType="Button">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference EntryEmail},
+                              Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                          Value="true" />
+                                <BindingCondition Binding="{Binding Source={x:Reference EntryPassword},
+                              Path=Text.Length,
+                              Converter={StaticResource dataHasPassword}}"
+                          Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True" />
+                            <Setter Property="BackgroundColor" Value="{StaticResource P_PimaryMainColor}"/>
+                        </MultiTrigger>
+                    </Button.Triggers>
+                </Button>
                 <Label Text="FORGOT PASSWORD ?" 
                    TextDecorations="Underline"
                    HorizontalOptions="CenterAndExpand"

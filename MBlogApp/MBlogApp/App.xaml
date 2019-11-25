@@ -19,7 +19,7 @@
             </Style>
             <Style TargetType="Button">
                 <Setter Property="Margin" Value="40,0"/>
-                <Setter Property="BackgroundColor" Value="{StaticResource P_PimaryMainColor}"/>
+                <Setter Property="BackgroundColor" Value="LightGray"/>
                 <Setter Property="TextColor" Value="{StaticResource P_WhiteColor}"/>
                 <Setter Property="FontSize" Value="26"/>
                 <!--<Setter Property="FontAttributes" Value="Bold"/>-->
