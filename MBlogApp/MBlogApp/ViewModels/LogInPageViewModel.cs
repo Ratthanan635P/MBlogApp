@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace MBlogApp.ViewModels
 {
-	public class LogInPageViewModel : INotifyPropertyChanged
+	public class LogInPageViewModel  :BaseViewModel
 	{
 		//public LogInCommand LogInModel { get; set; }
 		private LogInCommand logInModel;
@@ -34,7 +34,7 @@ namespace MBlogApp.ViewModels
 			RegisterCommand = new Command(GotoRegisterPage);
 		}
 
-		public event PropertyChangedEventHandler PropertyChanged;
+		//public event PropertyChangedEventHandler PropertyChanged;
 
 		private async void GotoForgotPage ()
 		{
@@ -44,13 +44,13 @@ namespace MBlogApp.ViewModels
 		{
 			await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
 		}
-		protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-		{
-			var changed = PropertyChanged;
-			if (changed == null)
-				return;
-			changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		//protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+		//{
+		//	var changed = PropertyChanged;
+		//	if (changed == null)
+		//		return;
+		//	changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-		}
+		//}
 	}
 }

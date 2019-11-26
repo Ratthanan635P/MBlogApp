@@ -7,7 +7,8 @@
              x:Class="MBlogApp.App">
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="P_PimaryColor">#1C6B68</Color>
+            <Color x:Key="P_PimaryColor">#E7EFEF</Color>
+            <Color x:Key="P_PimaryGreenColor">#E7EFEF</Color>
             <Color x:Key="P_PimaryMainColor">#1A6B69</Color>
             <Color x:Key="P_WhiteColor">#FFFFFF</Color>
             <Style TargetType="Frame" >
@@ -19,7 +20,7 @@
             </Style>
             <Style TargetType="Button">
                 <Setter Property="Margin" Value="40,0"/>
-                <Setter Property="BackgroundColor" Value="LightGray"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource P_PimaryColor}"/>
                 <Setter Property="TextColor" Value="{StaticResource P_WhiteColor}"/>
                 <Setter Property="FontSize" Value="26"/>
                 <Setter Property="IsEnabled" Value="False"/>

@@ -14,7 +14,7 @@ namespace MBlogApp.Views
 	{
 		public ForgotPasswordPage()
 		{
-			InitializeComponent();
+			InitializeComponent();		
 			//btnSend.IsEnabled = false;
 		}
 	}

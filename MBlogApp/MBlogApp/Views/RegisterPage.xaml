@@ -10,7 +10,7 @@
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:MultiTriggerConverter x:Key="dataHasBeenEntered" />
+            <local:EmailTriggerConverter x:Key="dataHasBeenEntered" />
             <local:PasswordTriggerConverter x:Key="dataHasPassword" />
 
         </ResourceDictionary>
@@ -86,7 +86,7 @@
                         <MultiTrigger TargetType="Button">
                             <MultiTrigger.Conditions>
                                 <BindingCondition Binding="{Binding Source={x:Reference EntryEmail},
-                              Path=Text.Length,
+                              Path=Text,
                               Converter={StaticResource dataHasBeenEntered}}"
                           Value="true" />
                                 <BindingCondition Binding="{Binding Source={x:Reference EntryPassword},

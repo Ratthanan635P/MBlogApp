@@ -24,7 +24,7 @@ namespace MBlogApp.Views
 		{
 			//Img_Logo.Opacity = 1;
 			//await Img_Logo.TranslateTo(100, 100, 2500, Easing.BounceIn);
-			await Img_Logo.FadeTo(1, 4000);
+			await Img_Logo.FadeTo(1, 2000);
 			await Task.Delay(1000);
 			await Navigation.PushAsync(new LogInPage());
 						

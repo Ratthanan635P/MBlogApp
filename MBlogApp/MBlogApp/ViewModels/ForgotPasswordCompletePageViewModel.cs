@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace MBlogApp.ViewModels
 {
-	public class ForgotPasswordCompletePageViewModel
+	public class ForgotPasswordCompletePageViewModel : BaseViewModel
 	{
 		public ICommand RegisterCommand { get; set; }
 		public ICommand SendEmailCommand { get; set; }
@@ -27,10 +27,10 @@ namespace MBlogApp.ViewModels
 		{
 			await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
 		}
-		private async void BackPage()
-		{
-			await App.Current.MainPage.Navigation.PushAsync(new LogInPage());
-		}
+		//private async void BackPage()
+		//{
+		//	await App.Current.MainPage.Navigation.PushAsync(new LogInPage());
+		//}
 		private async void GotoPage()
 		{
 			await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());

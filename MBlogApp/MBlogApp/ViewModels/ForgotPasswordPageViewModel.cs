@@ -9,15 +9,15 @@ using Xamarin.Forms;
 
 namespace MBlogApp.ViewModels
 {
-	public class ForgotPasswordPageViewModel:INotifyPropertyChanged
+	public class ForgotPasswordPageViewModel:BaseViewModel
 	{
 		public ICommand RegisterCommand { get; set; }
 		public ICommand SendEmailCommand { get; set; }
 		public ICommand ForgotCommand { get; set; }
 		public ICommand BackPageCommand { get; set; }
-		private string email;
+		private string email="";
 
-		public event PropertyChangedEventHandler PropertyChanged;
+	//	public event PropertyChangedEventHandler PropertyChanged;
 
 		public string Email
 		{
@@ -36,11 +36,15 @@ namespace MBlogApp.ViewModels
 			ForgotCommand = new Command(GotoForgotPage);
 			RegisterCommand = new Command(GotoRegisterPage);
 			BackPageCommand = new Command(BackPage);
-			SendEmailCommand=new Command(SendEmailPage);
+			//SendEmailCommand=new Command(SendEmailPage,CanSendEmailPage);
+			SendEmailCommand=new Command(SendEmailPage,()=>false);
 			
 		}
 
-		
+		private bool CanSendEmailPage()
+		{
+			return false;
+		}
 
 		private async void GotoForgotPage()
 		{
@@ -50,21 +54,21 @@ namespace MBlogApp.ViewModels
 		{
 			await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
 		}
-		private async void BackPage()
-		{
-			await App.Current.MainPage.Navigation.PopAsync();
-		}
+		//private async void BackPage()
+		//{
+		//	await App.Current.MainPage.Navigation.PopAsync();
+		//}
 		private async void SendEmailPage()
 		{
 			await App.Current.MainPage.Navigation.PushAsync(new ForgotPasswordCompletePage());
 		}
-		protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-		{
-			var changed = PropertyChanged;
-			if (changed == null)
-				return;
-			changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		//protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+		//{
+		//	var changed = PropertyChanged;
+		//	if (changed == null)
+		//		return;
+		//	changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-		}
+		//}
 	}
 }
