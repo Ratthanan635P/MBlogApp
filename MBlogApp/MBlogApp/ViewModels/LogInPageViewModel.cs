@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -38,13 +39,27 @@ namespace MBlogApp.ViewModels
 				}
 			}
 		}
+		private bool loading;
+		public bool Loading
+		{
+			get { return loading; }
+			set
+			{
+				if (value != loading)
+				{
+					loading = value;
+					OnPropertyChanged();
+				}
+			}
+		}
 		public ICommand RegisterCommand { get; set; }
 		public ICommand ForgotCommand { get; set; }
 		public ICommand LogInCommand { get; set; }
 		public LogInPageViewModel()
 		{
 			logInModel = new LogInModel();
-			errorMessage = "";
+			ErrorMessage = "";
+			Loading = false;
 			ForgotCommand = new Command(GotoForgotPage);
 			RegisterCommand = new Command(GotoRegisterPage);
 			LogInCommand = new Command(GotoHomePage,()=>false);
@@ -62,6 +77,8 @@ namespace MBlogApp.ViewModels
 		}
 		private async void GotoHomePage()
 		{
+			Loading = true;
+			ErrorMessage = "";
 			string error = "";
 			if (!((CheckRegEx_UserName(LogInModel.Email))&&(LogInModel.Email.Length>App.LengthEmail)))
 			{
@@ -81,23 +98,30 @@ namespace MBlogApp.ViewModels
 			}
 
 			//Call Api Check email and Password
-
+			
 			if (error == "")
 			{
 				if ((LogInModel.Email.ToUpper() == "TEST3@TEST.TEST") && (LogInModel.PassWord == "Gg123456789"))
 				{
 					ErrorMessage = "";
+					
+					await Task.Delay(3000);
+					Loading = false;
 					await App.Current.MainPage.Navigation.PushAsync(new MainPage());
 				}
 				else
 				{
+					await Task.Delay(3000);
 					error = "No Account Email";
 					ErrorMessage = error;
+					Loading = false;
 				}
 			}
 			else
 			{
-				ErrorMessage = error;				
+				await Task.Delay(1500);
+				ErrorMessage = error;
+				Loading = false;
 			}
 		   //	await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
 		}

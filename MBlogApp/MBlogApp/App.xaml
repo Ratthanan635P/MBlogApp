@@ -22,9 +22,9 @@
                 <Setter Property="Margin" Value="40,0"/>
                 <Setter Property="BackgroundColor" Value="{StaticResource P_PimaryColor}"/>
                 <Setter Property="TextColor" Value="{StaticResource P_WhiteColor}"/>
-                <Setter Property="FontSize" Value="26"/>
+                <Setter Property="FontSize" Value="24"/>
                 <Setter Property="IsEnabled" Value="False"/>
-                <!--<Setter Property="FontAttributes" Value="Bold"/>-->
+                <Setter Property="FontAttributes" Value="Bold"/>
 
             </Style>
             <Style TargetType="Label" >

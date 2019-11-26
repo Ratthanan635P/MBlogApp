@@ -17,5 +17,15 @@ namespace MBlogApp.Views
 			InitializeComponent();		
 			//btnSend.IsEnabled = false;
 		}
+
+		private void EntryEmail_Focused(object sender, FocusEventArgs e)
+		{
+			fEmail.BorderColor = Color.FromHex("#1A6B69");
+		}
+
+		private void EntryEmail_Unfocused(object sender, FocusEventArgs e)
+		{
+			fEmail.BorderColor = Color.Gray;
+		}
 	}
 }

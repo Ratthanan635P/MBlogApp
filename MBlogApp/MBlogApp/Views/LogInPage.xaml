@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewmodel="clr-namespace:MBlogApp.ViewModels"
              xmlns:local="clr-namespace:MBlogApp.Converters"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              mc:Ignorable="d"
              x:Class="MBlogApp.Views.LogInPage"
              NavigationPage.HasNavigationBar="False"
@@ -22,7 +23,8 @@
     <ContentPage.Content>
        
         <ScrollView>
-        <StackLayout>
+            <Grid>
+             <StackLayout>
                 <StackLayout HeightRequest="50"
                     />
                 <Image x:Name="Img_Logo" Source="logo_trans.png" 
@@ -38,13 +40,16 @@
                    IsVisible="{Binding Source={x:Reference LbErrorMessage},
                                     Path=Text,
                                     Converter={StaticResource dataHasError}}"/>
-                <Frame>
+                <Frame x:Name="fEmail">
                     <StackLayout Orientation="Vertical" Spacing="0">
                     <Label Text="EMAIL"
                             Margin="10,0"/>
                     <Entry x:Name="EntryEmail"  IsPassword="False"
                              Margin="10,0"
                             ReturnType="Next"
+                           Focused="EntryEmail_Focused"
+                           Unfocused="EntryEmail_Unfocused"
+                           
                            Text="{Binding LogInModel.Email}"
                             />
                 </StackLayout>
@@ -53,7 +58,7 @@
                    TextColor="Red"
                     Margin="40,0"
                    IsVisible="False"/>
-            <Frame>
+            <Frame x:Name="fPassword">
                 <StackLayout Orientation="Vertical" Spacing="0">
                     <Label Text="PASSWORD" 
                            Margin="10,0"/>
@@ -61,6 +66,8 @@
                              Margin="10,0"
                                 Text="{Binding LogInModel.PassWord}"
                             ReturnType="Done"
+                                Focused="EntryPassword_Focused"
+                                Unfocused="EntryPassword_Unfocused"
                           />
                 </StackLayout>
             </Frame>
@@ -68,6 +75,7 @@
                         HeightRequest="65"
                         Margin="40,20,40,5"
                         IsEnabled="False"
+                        
                         Command="{Binding LogInCommand}"
                         >
                     <Button.Triggers>
@@ -109,6 +117,16 @@
                     </Label.GestureRecognizers>
                 </Label>
         </StackLayout>
+                <StackLayout BackgroundColor="LightGray" Opacity="0.8" IsVisible="{Binding Loading}">
+                    <forms:AnimationView 
+	                    x:Name="animationView" 
+	                    Animation="loadingdot2.json" 
+	                    Loop="True"
+	                    AutoPlay="True"
+	                    VerticalOptions="CenterAndExpand" 
+	                    HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+            </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

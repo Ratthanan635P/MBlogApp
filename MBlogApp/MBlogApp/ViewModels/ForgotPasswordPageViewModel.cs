@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -41,6 +42,19 @@ namespace MBlogApp.ViewModels
 				}
 			}
 		}
+		private bool loading;
+		public bool Loading
+		{
+			get { return loading; }
+			set
+			{
+				if (value != loading)
+				{
+					loading = value;
+					OnPropertyChanged();
+				}
+			}
+		}
 		public ForgotPasswordPageViewModel()
 		{
 			errorMessage = "";
@@ -68,16 +82,17 @@ namespace MBlogApp.ViewModels
 
 		private async void SendEmailPage()
 		{
-
+			Loading = true;
 			string error = "";
 			if (!((CheckRegEx_UserName(Email)) && (Email.Length > App.LengthEmail)))
 			{
 				error = " Email is Invalid!";
 
 			}
-						
-			//Call Api send email Forgot password	
 
+			//Call Api send email Forgot password	
+			await Task.Delay(3000);
+			Loading = false;
 			if (error == "")
 			{
 				if (Email.ToUpper() == "TEST3@TEST.TEST")
