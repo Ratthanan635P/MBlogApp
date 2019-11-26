@@ -27,8 +27,7 @@
 	                    Animation="WelcomeMblog.json" 
 	                    Loop="True"
 	                    AutoPlay="True"
-	                    VerticalOptions="CenterAndExpand" 
-	                    HorizontalOptions="CenterAndExpand" />
+	                    />
         <Button Text="BACK " 
                         TextColor="{StaticResource P_PimaryMainColor}"
                       

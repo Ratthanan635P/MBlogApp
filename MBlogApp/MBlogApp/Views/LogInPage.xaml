@@ -30,6 +30,8 @@
                 <Image x:Name="Img_Logo" Source="logo_trans.png" 
                    VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand"
+                       Opacity ="0"
+                        IsVisible="False"
                    />
                 <Label 
                     x:Name="LbErrorMessage"
@@ -40,7 +42,7 @@
                    IsVisible="{Binding Source={x:Reference LbErrorMessage},
                                     Path=Text,
                                     Converter={StaticResource dataHasError}}"/>
-                <Frame x:Name="fEmail">
+                    <Frame x:Name="fEmail" IsVisible="False">
                     <StackLayout Orientation="Vertical" Spacing="0">
                     <Label Text="EMAIL"
                             Margin="10,0"/>
@@ -58,7 +60,7 @@
                    TextColor="Red"
                     Margin="40,0"
                    IsVisible="False"/>
-            <Frame x:Name="fPassword">
+                    <Frame x:Name="fPassword" IsVisible="False">
                 <StackLayout Orientation="Vertical" Spacing="0">
                     <Label Text="PASSWORD" 
                            Margin="10,0"/>
@@ -71,11 +73,12 @@
                           />
                 </StackLayout>
             </Frame>
-                <Button Text="Log In" 
+                <Button x:Name="BtnLogIn"
+                        Text="Log In" 
                         HeightRequest="65"
                         Margin="40,20,40,5"
-                        IsEnabled="False"
-                        
+                        IsEnabled="False" 
+                        IsVisible="False"
                         Command="{Binding LogInCommand}"
                         >
                     <Button.Triggers>
@@ -96,17 +99,20 @@
                     </Button.Triggers>
                 </Button>
                 <Label Text="FORGOT PASSWORD ?" 
+                        x:Name="LbForgot"
                    TextDecorations="Underline"
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="Start"
                    FontAttributes="None"
-                   FontSize="Medium">
+                   FontSize="Medium"
+                       IsVisible="False">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ForgotCommand}"/>
                     </Label.GestureRecognizers>
                 </Label>
             <Label Text="REGISTER"
-                  
+                   x:Name="LbRegister"
+                  IsVisible="False"
                     HorizontalOptions="CenterAndExpand"
                     VerticalOptions="EndAndExpand"
                    FontAttributes="None"

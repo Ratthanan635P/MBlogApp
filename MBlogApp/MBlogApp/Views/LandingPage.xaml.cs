@@ -18,7 +18,7 @@ namespace MBlogApp.Views
 		}
 		private async void ActionImage()
 		{
-			await Img_Logo.FadeTo(1, 2000);
+			await Img_Logo.FadeTo(1, 2500);
 			await Task.Delay(200);
 			await Navigation.PushAsync(new LogInPage());					
 		}		

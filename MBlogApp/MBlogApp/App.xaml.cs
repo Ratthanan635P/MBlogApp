@@ -14,7 +14,7 @@ namespace MBlogApp
 			DependencyService.Register<MockUserService>();
 			InitializeComponent();
 			
-			MainPage = new NavigationPage( new LandingPage());
+			MainPage = new NavigationPage( new LogInPage());
 		}
 
 		protected override void OnStart()
