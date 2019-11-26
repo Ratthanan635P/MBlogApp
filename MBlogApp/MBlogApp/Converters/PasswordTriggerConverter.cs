@@ -11,7 +11,7 @@ namespace MBlogApp.Converters
 		public object Convert(object value, Type targetType,
 			object parameter, CultureInfo culture)
 		{
-			if ((int)value > App.LengthPassword)
+			if ((int)value > 6)
 				return true;    // data has been entered
 			else
 				return false;   // input is empty

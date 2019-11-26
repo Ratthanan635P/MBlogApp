@@ -12,7 +12,7 @@ namespace MBlogApp.Converters
 			object parameter, CultureInfo culture)
 		{
 			var email = (string)value;
-			if (email == null || email.Length <= App.LengthEmail)
+			if (email == null || email.Length <= 4)
 			{
 			     return false;    // data has been entered
 			}

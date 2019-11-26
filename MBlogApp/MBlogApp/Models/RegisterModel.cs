@@ -9,6 +9,6 @@ namespace MBlogApp.Models
 		public string Email { get; set; }
 		public string PassWord { get; set; }
 		public string ConfirmPassWord { get; set; }
-		public string ErrorMessage { get; set; }
+	//	public string ErrorMessage { get; set; }
 	}
 }

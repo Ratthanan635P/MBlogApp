@@ -80,12 +80,12 @@ namespace MBlogApp.ViewModels
 			Loading = true;
 			ErrorMessage = "";
 			string error = "";
-			if (!((CheckRegEx_UserName(LogInModel.Email))&&(LogInModel.Email.Length>App.LengthEmail)))
+			if (!((CheckRegEx_UserName(LogInModel.Email))&&(LogInModel.Email.Length>LengthEmail)))
 			{
 				error = " Email is Invalid!";
 
 			}
-			if (!((CheckRegEx_Password(LogInModel.PassWord)) && (LogInModel.PassWord.Length > App.LengthPassword)))
+			if (!((CheckRegEx_Password(LogInModel.PassWord)) && (LogInModel.PassWord.Length > LengthPassword)))
 			{
 				if (error != "")
 				{
@@ -101,10 +101,10 @@ namespace MBlogApp.ViewModels
 			
 			if (error == "")
 			{
-				if ((LogInModel.Email.ToUpper() == "TEST3@TEST.TEST") && (LogInModel.PassWord == "Gg123456789"))
+				var result = UserService.LogInUser(LogInModel);
+				if (result.StatusRespond == "200")
 				{
-					ErrorMessage = "";
-					
+					ErrorMessage = "";					
 					await Task.Delay(3000);
 					Loading = false;
 					await App.Current.MainPage.Navigation.PushAsync(new MainPage());

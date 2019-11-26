@@ -111,7 +111,7 @@ namespace MBlogApp.ViewModels
 			Loading = false;
 			errorMessage = "";
 			ForgotCommand = new Command(GotoForgotPage);
-			RegisterCommand = new Command(GotoLogInPage, ()=>false);
+			RegisterCommand = new Command(GotoLogInPage, () => false);
 			BackPageCommand = new Command(BackPage);
 		}
 		private async void GotoForgotPage()
@@ -122,12 +122,12 @@ namespace MBlogApp.ViewModels
 		{
 			Loading = true;
 			string error = "";
-			if (!((CheckRegEx_UserName(Email)) && (Email.Length > App.LengthEmail)))
+			if (!((CheckRegEx_UserName(Email)) && (Email.Length > LengthEmail)))
 			{
 				error = " Email is Invalid!";
 
 			}
-			if (!((CheckRegEx_Password(Password)) && (Password.Length > App.LengthPassword)))
+			if (!((CheckRegEx_Password(Password)) && (Password.Length > LengthPassword)))
 			{
 				if (error != "")
 				{
@@ -150,22 +150,27 @@ namespace MBlogApp.ViewModels
 			}
 
 			//Call Api register Check email and Password
+
 			await Task.Delay(3000);
 			Loading = false;
 			if (error == "")
 			{
-				if ((Email.ToUpper() == "TEST3@TEST.TEST") && (Password == "Gg123456789"))
+				RegisterModel = new RegisterModel()
 				{
-					error = "Email is exist!";
+					Email=Email,
+					PassWord=Password,
+					ConfirmPassWord=ConfirmPassword
+				};
+				var result = UserService.RegisterUser(RegisterModel);
+				if (result.StatusRespond != "200")
+				{
+					error = result.ErrorMessage;
 					ErrorMessage = error;
-				
-					
 				}
 				else
 				{
 					ErrorMessage = "";
 					//RegisterModel.ErrorMessage = "";
-
 					await App.Current.MainPage.Navigation.PopAsync();
 				}
 			}
@@ -173,7 +178,7 @@ namespace MBlogApp.ViewModels
 			{
 				ErrorMessage = error;
 
-				RegisterModel.ErrorMessage = "";
+
 			}
 			//	await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
 		}

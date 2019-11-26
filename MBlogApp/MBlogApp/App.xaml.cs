@@ -1,4 +1,5 @@
-﻿using MBlogApp.Views;
+﻿using MBlogApp.Services.Implements;
+using MBlogApp.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -7,15 +8,12 @@ namespace MBlogApp
 {
 	public partial class App : Application
 	{
-		public static int LengthEmail { get; private set; }
-		public static int LengthPassword { get; private set; }
-		public static int LengthMax { get; private set; }
+		
 		public App()
 		{
+			DependencyService.Register<MockUserService>();
 			InitializeComponent();
-			LengthEmail = 4;
-			LengthPassword = 6;
-			LengthMax = 50;
+			
 			MainPage = new NavigationPage( new LandingPage());
 		}
 

@@ -1,16 +1,27 @@
-﻿using System;
+﻿using MBlogApp.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using Xamarin.Forms;
 
 namespace MBlogApp.ViewModels
 {
 	public class BaseViewModel:INotifyPropertyChanged
 	{
+		public IUserService UserService { get; } = DependencyService.Get<IUserService>();
+		public  int LengthEmail { get; private set; }
+		public  int LengthPassword { get; private set; }
+		public  int LengthMax { get; private set; }
 		public event PropertyChangedEventHandler PropertyChanged;
-
+		public BaseViewModel()
+		{
+			LengthEmail = 4;
+			LengthPassword = 6;
+			LengthMax = 50;
+		}
 		protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
 		{
 			var changed = PropertyChanged;

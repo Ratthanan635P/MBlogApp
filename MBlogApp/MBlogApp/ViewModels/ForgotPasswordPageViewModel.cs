@@ -84,7 +84,7 @@ namespace MBlogApp.ViewModels
 		{
 			Loading = true;
 			string error = "";
-			if (!((CheckRegEx_UserName(Email)) && (Email.Length > App.LengthEmail)))
+			if (!((CheckRegEx_UserName(Email)) && (Email.Length > LengthEmail)))
 			{
 				error = " Email is Invalid!";
 
@@ -95,7 +95,8 @@ namespace MBlogApp.ViewModels
 			Loading = false;
 			if (error == "")
 			{
-				if (Email.ToUpper() == "TEST3@TEST.TEST")
+				var result = UserService.GetPasswordByEmail(Email);
+				if (result.StatusRespond=="200")
 				{
 					//PassWord == "Gg123456789";
 				
@@ -104,7 +105,7 @@ namespace MBlogApp.ViewModels
 				}
 				else
 				{
-					ErrorMessage = "";
+					ErrorMessage = result.ErrorMessage;
 					Email = "";				
 				}
 			}
