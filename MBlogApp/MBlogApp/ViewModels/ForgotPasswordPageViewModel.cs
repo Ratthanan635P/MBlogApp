@@ -65,34 +65,42 @@ namespace MBlogApp.ViewModels
 		{
 			await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
 		}
-		//private async void BackPage()
-		//{
-		//	await App.Current.MainPage.Navigation.PopAsync();
-		//}
+
 		private async void SendEmailPage()
 		{
 
-			string error = "Email wrong!";
-			ErrorMessage = error;
-			if (Email == "te@te.test")
+			string error = "";
+			if (!((CheckRegEx_UserName(Email)) && (Email.Length > App.LengthEmail)))
 			{
-				ErrorMessage = "";
-				await App.Current.MainPage.Navigation.PushAsync(new ForgotPasswordCompletePage());
+				error = " Email is Invalid!";
+
+			}
+						
+			//Call Api send email Forgot password	
+
+			if (error == "")
+			{
+				if (Email.ToUpper() == "TEST3@TEST.TEST")
+				{
+					//PassWord == "Gg123456789";
+				
+					ErrorMessage = "";
+					await App.Current.MainPage.Navigation.PushAsync(new ForgotPasswordCompletePage());
+				}
+				else
+				{
+					ErrorMessage = "";
+					Email = "";				
+				}
 			}
 			else
 			{
 				ErrorMessage = error;
-			}
-			ErrorMessage = error;
-			
-		}
-		//protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-		//{
-		//	var changed = PropertyChanged;
-		//	if (changed == null)
-		//		return;
-		//	changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
+				//Email = "";
 
-		//}
+			}
+			//	await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
+
+		}
 	}
 }

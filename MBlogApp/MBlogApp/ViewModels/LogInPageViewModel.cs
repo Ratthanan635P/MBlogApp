@@ -60,21 +60,45 @@ namespace MBlogApp.ViewModels
 		{
 			await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
 		}
-		private void GotoHomePage()
+		private async void GotoHomePage()
 		{
-			string error = "Email wrong!";
-			string emailInput = LogInModel.Email;
-			string passwordInput = LogInModel.PassWord;
-			ErrorMessage = error;
-			if ((LogInModel.Email == "te@te.test") && (LogInModel.PassWord == "123456789"))
+			string error = "";
+			if (!((CheckRegEx_UserName(LogInModel.Email))&&(LogInModel.Email.Length>App.LengthEmail)))
 			{
-				ErrorMessage = "";
+				error = " Email is Invalid!";
+
+			}
+			if (!((CheckRegEx_Password(LogInModel.PassWord)) && (LogInModel.PassWord.Length > App.LengthPassword)))
+			{
+				if (error != "")
+				{
+					error = " Email and Password is Invalid! ";
+				}
+				else
+				{
+					error = " Password is Invalid!";
+				}
+			}
+
+			//Call Api Check email and Password
+
+			if (error == "")
+			{
+				if ((LogInModel.Email.ToUpper() == "TEST3@TEST.TEST") && (LogInModel.PassWord == "Gg123456789"))
+				{
+					ErrorMessage = "";
+					await App.Current.MainPage.Navigation.PushAsync(new MainPage());
+				}
+				else
+				{
+					error = "No Account Email";
+					ErrorMessage = error;
+				}
 			}
 			else
 			{
-				ErrorMessage = error;
+				ErrorMessage = error;				
 			}
-			LogInModel.ErrorMessage = error;
 		   //	await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
 		}
 	}

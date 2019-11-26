@@ -13,11 +13,13 @@ namespace MBlogApp.ViewModels
 		public ICommand SendEmailCommand { get; set; }
 		public ICommand ForgotCommand { get; set; }
 		public ICommand BackPageCommand { get; set; }
+		public ICommand LogInCommand { get; set; }
 		public ForgotPasswordCompletePageViewModel()
 		{
 			ForgotCommand = new Command(GotoForgotPage);
 			RegisterCommand = new Command(GotoRegisterPage);
 			BackPageCommand = new Command(BackPage);
+			LogInCommand = new Command(GotoLogInPage);
 		}
 		private async void GotoForgotPage()
 		{
@@ -31,9 +33,9 @@ namespace MBlogApp.ViewModels
 		//{
 		//	await App.Current.MainPage.Navigation.PushAsync(new LogInPage());
 		//}
-		private async void GotoPage()
+		private async void GotoLogInPage()
 		{
-			await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
+			await App.Current.MainPage.Navigation.PushAsync(new LogInPage());
 		}
 	}
 }

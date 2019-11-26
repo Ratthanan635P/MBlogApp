@@ -45,7 +45,7 @@
                              x:Name="EntryEmail"
                              IsPassword="False"
                              Margin="10,0"
-                            Text="{Binding RegisterModel.Email}"
+                            Text="{Binding Email}"
                              ReturnType="Next"/>
                     </StackLayout>
                 </Frame>
@@ -61,7 +61,7 @@
                              x:Name="EntryPassword"
                              IsPassword="True"
                              Margin="10,0"
-                            Text="{Binding RegisterModel.PassWord}" 
+                            Text="{Binding Password}" 
                                 ReturnType="Next"/>
                     </StackLayout>
                 </Frame>
@@ -77,7 +77,7 @@
                              x:Name="EntryConfirmPassword"
                             IsPassword="True"
                              Margin="10,0"
-                             Text="{Binding RegisterModel.ConfirmPassWord}" 
+                             Text="{Binding ConfirmPassword}" 
                                 ReturnType="Done"/>
                     </StackLayout>
                 </Frame>
@@ -85,6 +85,7 @@
                     HeightRequest="65"
                     Margin="40,20,40,5"
                         IsEnabled="False"
+                        Command="{Binding RegisterCommand}"
                     >
                     <Button.Triggers>
                         <MultiTrigger TargetType="Button">
