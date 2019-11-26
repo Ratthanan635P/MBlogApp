@@ -125,14 +125,12 @@ namespace MBlogApp.ViewModels
 			if (!((CheckRegEx_UserName(Email)) && (Email.Length > LengthEmail)))
 			{
 				error = " Email is Invalid!";
-
 			}
 			if (!((CheckRegEx_Password(Password)) && (Password.Length > LengthPassword)))
 			{
 				if (error != "")
 				{
 					error = " Email and Password is Invalid! ";
-
 				}
 				else
 				{
@@ -151,8 +149,8 @@ namespace MBlogApp.ViewModels
 
 			//Call Api register Check email and Password
 
-			await Task.Delay(3000);
-			Loading = false;
+			//await Task.Delay(3000);
+			
 			if (error == "")
 			{
 				RegisterModel = new RegisterModel()
@@ -166,19 +164,20 @@ namespace MBlogApp.ViewModels
 				{
 					error = result.ErrorMessage;
 					ErrorMessage = error;
+					Loading = false;
 				}
 				else
 				{
 					ErrorMessage = "";
-					//RegisterModel.ErrorMessage = "";
+					Loading = false;
+					await App.Current.MainPage.DisplayAlert("", "ลงทะเบียนสำเสร็จ", "OK");
 					await App.Current.MainPage.Navigation.PopAsync();
 				}
 			}
 			else
 			{
 				ErrorMessage = error;
-
-
+				Loading = false;
 			}
 			//	await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
 		}

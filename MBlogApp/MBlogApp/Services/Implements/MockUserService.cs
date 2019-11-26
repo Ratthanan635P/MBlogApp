@@ -19,7 +19,7 @@ namespace MBlogApp.Services.Implements
 				ListUser.Add(new DataUserModel()
 				{
 					Id = i,
-					Email = "TEST" + i + "TEST.TEST",
+					Email = "TEST" + i + "@TEST.TEST",
 					Password = "Password0"+i
 				}); 
 			}
@@ -29,7 +29,7 @@ namespace MBlogApp.Services.Implements
 			UserModel userModel = new UserModel();
 			if (email != null)
 			{
-				var password = ListUser.Where(u => u.Email == email).Select(u => u.Password).FirstOrDefault();
+				var password = ListUser.Where(u => u.Email == email.ToUpper()).Select(u => u.Password).FirstOrDefault();
 				
 				if (String.IsNullOrEmpty(password))
 				{
@@ -66,9 +66,9 @@ namespace MBlogApp.Services.Implements
 			UserModel userModel = new UserModel();
 			if (user != null)
 			{
-				var userId = ListUser.Where(u => u.Email == user.Email&&u.Password==user.PassWord).Select(u => u.Id).FirstOrDefault();
+				var userId = ListUser.Where(u => u.Email == user.Email.ToUpper()&&u.Password==user.PassWord).Select(u => u.Id).FirstOrDefault();
 
-				if (userId!=0)
+				if (userId==0)
 				{
 					userModel = new UserModel()
 					{
@@ -105,7 +105,7 @@ namespace MBlogApp.Services.Implements
 			{
 				if (user.PassWord == user.ConfirmPassWord)
 				{
-					var userId = ListUser.Where(u => u.Email == user.Email ).Select(u => u.Id).FirstOrDefault();
+					var userId = ListUser.Where(u => u.Email == user.Email.ToUpper() ).Select(u => u.Id).FirstOrDefault();
 					if (userId != 0)
 					{
 						userModel = new UserModel()
@@ -120,7 +120,7 @@ namespace MBlogApp.Services.Implements
 						ListUser.Add(new DataUserModel()
 						{
 							Id = ListUser.Max(c=>c.Id)+1,
-							Email = user.Email,
+							Email = user.Email.ToUpper(),
 							Password = user.PassWord
 						});
 						userModel = new UserModel()

@@ -105,21 +105,27 @@ namespace MBlogApp.ViewModels
 				if (result.StatusRespond == "200")
 				{
 					ErrorMessage = "";					
-					await Task.Delay(3000);
+					//await Task.Delay(3000);
 					Loading = false;
-					await App.Current.MainPage.Navigation.PushAsync(new MainPage());
+					DataUserModel dataUser = new DataUserModel()
+					{ 
+						Id =result.UserId,
+						Email=LogInModel.Email,
+						Password=LogInModel.PassWord
+	                 };
+					await App.Current.MainPage.Navigation.PushAsync(new MainPage(dataUser));
 				}
 				else
 				{
-					await Task.Delay(3000);
-					error = "No Account Email";
+					//await Task.Delay(3000);
+					error = result.ErrorMessage;
 					ErrorMessage = error;
 					Loading = false;
 				}
 			}
 			else
 			{
-				await Task.Delay(1500);
+				//await Task.Delay(1500);
 				ErrorMessage = error;
 				Loading = false;
 			}

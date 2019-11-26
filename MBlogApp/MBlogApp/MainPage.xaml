@@ -3,14 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              mc:Ignorable="d"
-             x:Class="MBlogApp.MainPage">
+             x:Class="MBlogApp.MainPage"
+             NavigationPage.HasNavigationBar="False">
 
-    <StackLayout>
+    <StackLayout Spacing="0">
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
+        <Label Text="Welcome to MBlog" 
            HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+           VerticalOptions="StartAndExpand" />
+        <Label x:Name="LbUser" Text="Welcome to Xamarin.Forms!" 
+               HorizontalOptions="Center"
+          />
+        <Label  x:Name="LbEmail"  Text="Welcome to Xamarin.Forms!" 
+               HorizontalOptions="Center"
+          />
+        <Label  x:Name="LbPassword"  Text="Welcome to Xamarin.Forms!" 
+               HorizontalOptions="Center"
+          />
+        <forms:AnimationView 
+	                    x:Name="animationView" 
+	                    Animation="WelcomeMblog.json" 
+	                    Loop="True"
+	                    AutoPlay="True"
+	                    VerticalOptions="CenterAndExpand" 
+	                    HorizontalOptions="CenterAndExpand" />
+        <Button Text="BACK " 
+                        TextColor="{StaticResource P_PimaryMainColor}"
+                      
+                        Margin="40,5,40,5"
+                        VerticalOptions="EndAndExpand"
+                        BackgroundColor="{StaticResource P_WhiteColor}"
+                        BorderColor="{StaticResource P_PimaryMainColor}"
+                        BorderWidth="1.5"
+                        IsEnabled="True"
+                        Clicked="Button_Clicked"
+                        />
+        <Button/>
+       
     </StackLayout>
 
 </ContentPage>
