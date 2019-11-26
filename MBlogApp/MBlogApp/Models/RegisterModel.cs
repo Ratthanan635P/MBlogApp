@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MBlogApp.Models
 {
-	public class RegisterCommand
+	public class RegisterModel
 	{
 		public string Email { get; set; }
 		public string PassWord { get; set; }

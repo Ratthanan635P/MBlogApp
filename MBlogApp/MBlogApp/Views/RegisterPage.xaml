@@ -12,7 +12,7 @@
         <ResourceDictionary>
             <local:EmailTriggerConverter x:Key="dataHasBeenEntered" />
             <local:PasswordTriggerConverter x:Key="dataHasPassword" />
-
+            <local:ErrorTriggerConverter x:Key="dataHasError" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.BindingContext>
@@ -29,10 +29,14 @@
                        HeightRequest="120"
                        WidthRequest="120"
                    />
-                <Label Text="{Binding RegisterModel.ErrorMessage}" 
-                   TextColor="Red"
+                <Label  
+                     x:Name="LbErrorMessage"
+                   TextColor="{StaticResource P_RedColor}"
                    Margin="40,0"
-                   IsVisible="False"/>
+                     Text="{Binding ErrorMessage}"
+                   IsVisible="{Binding Source={x:Reference LbErrorMessage},
+                                    Path=Text,
+                                    Converter={StaticResource dataHasError}}"/>
                 <Frame>
                     <StackLayout Orientation="Vertical">
                         <Label Text="EMAIL"

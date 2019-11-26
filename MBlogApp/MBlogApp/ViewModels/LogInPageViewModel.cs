@@ -12,9 +12,8 @@ namespace MBlogApp.ViewModels
 {
 	public class LogInPageViewModel  :BaseViewModel
 	{
-		//public LogInCommand LogInModel { get; set; }
-		private LogInCommand logInModel;
-		public LogInCommand LogInModel
+		private LogInModel logInModel;
+		public LogInModel LogInModel
 		{
 			get { return logInModel; }
 			set
@@ -26,12 +25,29 @@ namespace MBlogApp.ViewModels
 				}
 			}
 		}
+		private string errorMessage;
+		public string ErrorMessage
+		{
+			get { return errorMessage; }
+			set
+			{
+				if (value != errorMessage)
+				{
+					errorMessage = value;
+					OnPropertyChanged();
+				}
+			}
+		}
 		public ICommand RegisterCommand { get; set; }
 		public ICommand ForgotCommand { get; set; }
+		public ICommand LogInCommand { get; set; }
 		public LogInPageViewModel()
 		{
+			logInModel = new LogInModel();
+			errorMessage = "";
 			ForgotCommand = new Command(GotoForgotPage);
 			RegisterCommand = new Command(GotoRegisterPage);
+			LogInCommand = new Command(GotoHomePage,()=>false);
 		}
 
 		//public event PropertyChangedEventHandler PropertyChanged;
@@ -44,13 +60,22 @@ namespace MBlogApp.ViewModels
 		{
 			await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
 		}
-		//protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-		//{
-		//	var changed = PropertyChanged;
-		//	if (changed == null)
-		//		return;
-		//	changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-		//}
+		private void GotoHomePage()
+		{
+			string error = "Email wrong!";
+			string emailInput = LogInModel.Email;
+			string passwordInput = LogInModel.PassWord;
+			ErrorMessage = error;
+			if ((LogInModel.Email == "te@te.test") && (LogInModel.PassWord == "123456789"))
+			{
+				ErrorMessage = "";
+			}
+			else
+			{
+				ErrorMessage = error;
+			}
+			LogInModel.ErrorMessage = error;
+		   //	await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
+		}
 	}
 }

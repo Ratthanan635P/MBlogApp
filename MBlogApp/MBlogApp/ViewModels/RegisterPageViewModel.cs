@@ -16,8 +16,8 @@ namespace MBlogApp.ViewModels
 		public ICommand ForgotCommand { get; set; }
 		public ICommand BackPageCommand { get; set; }
 
-		private RegisterCommand registerModel;
-		public RegisterCommand RegisterModel
+		private RegisterModel registerModel;
+		public RegisterModel RegisterModel
 		{
 			get { return registerModel; }
 			set
@@ -29,32 +29,48 @@ namespace MBlogApp.ViewModels
 				}
 			}
 		}
-		//public event PropertyChangedEventHandler PropertyChanged;
+		private string errorMessage;
+		public string ErrorMessage
+		{
+			get { return errorMessage; }
+			set
+			{
+				if (value != errorMessage)
+				{
+					errorMessage = value;
+					OnPropertyChanged();
+				}
+			}
+		}
 		public RegisterPageViewModel()
 		{
+			registerModel = new RegisterModel();
+			errorMessage = "";
 			ForgotCommand = new Command(GotoForgotPage);
-			RegisterCommand = new Command(GotoRegisterPage,()=>false);
+			RegisterCommand = new Command(GotoLogInPage, ()=>false);
 			BackPageCommand = new Command(BackPage);
 		}
 		private async void GotoForgotPage()
 		{
 			await App.Current.MainPage.Navigation.PushAsync(new ForgotPasswordPage());
 		}
-		private async void GotoRegisterPage()
+		private async void GotoLogInPage()
 		{
-			await App.Current.MainPage.Navigation.PushAsync(new RegisterPage());
-		}
-		//private async void BackPage()
-		//{
-		//	await App.Current.MainPage.Navigation.PopAsync();
-		//}
-		//protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-		//{
-		//	var changed = PropertyChanged;
-		//	if (changed == null)
-		//		return;
-		//	changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-		//}
+			string error = "Email wrong!";
+			string emailInput = RegisterModel.Email;
+			string passwordInput = RegisterModel.PassWord;
+			ErrorMessage = error;
+			if ((RegisterModel.Email == "te@te.test") && (RegisterModel.PassWord == "123456789"))
+			{
+				ErrorMessage = "";
+				await App.Current.MainPage.Navigation.PopAsync();
+			}
+			else
+			{
+				ErrorMessage = error;
+			}
+			RegisterModel.ErrorMessage = error;
+			
+		}		
 	}
 }

@@ -13,7 +13,7 @@
         <ResourceDictionary>
             <local:EmailTriggerConverter x:Key="dataHasBeenEntered" />
             <local:PasswordTriggerConverter x:Key="dataHasPassword" />
-            
+            <local:ErrorTriggerConverter x:Key="dataHasError" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.BindingContext>
@@ -29,12 +29,16 @@
                    VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand"
                    />
-            <Label 
-                   TextColor="Red"
+                <Label 
+                    x:Name="LbErrorMessage"
+                   TextColor="{StaticResource P_RedColor}"
                    Margin="40,0"
-                   Text="{Binding LogInModel.ErrorMessage}"
-                   IsVisible="False"/>
-            <Frame>
+                   WidthRequest="250"
+                   Text="{Binding ErrorMessage}"
+                   IsVisible="{Binding Source={x:Reference LbErrorMessage},
+                                    Path=Text,
+                                    Converter={StaticResource dataHasError}}"/>
+                <Frame>
                     <StackLayout Orientation="Vertical" Spacing="0">
                     <Label Text="EMAIL"
                             Margin="10,0"/>
@@ -55,15 +59,17 @@
                            Margin="10,0"/>
                         <Entry  x:Name="EntryPassword" IsPassword="True"
                              Margin="10,0"
-                                Text="{Binding LogInModel.Password}"
+                                Text="{Binding LogInModel.PassWord}"
                             ReturnType="Done"
                           />
                 </StackLayout>
             </Frame>
                 <Button Text="Log In" 
-                    HeightRequest="65"
-                    Margin="40,20,40,5"
-                        IsEnabled="False">
+                        HeightRequest="65"
+                        Margin="40,20,40,5"
+                        IsEnabled="False"
+                        Command="{Binding LogInCommand}"
+                        >
                     <Button.Triggers>
                         <MultiTrigger TargetType="Button">
                             <MultiTrigger.Conditions>

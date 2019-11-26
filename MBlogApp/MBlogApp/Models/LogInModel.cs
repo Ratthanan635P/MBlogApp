@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace MBlogApp.Models
 {
-	public class LogInCommand
+	public class LogInModel
 	{
 		public string Email { get; set; }
 		public string PassWord { get; set; }

@@ -16,9 +16,6 @@ namespace MBlogApp.ViewModels
 		public ICommand ForgotCommand { get; set; }
 		public ICommand BackPageCommand { get; set; }
 		private string email="";
-
-	//	public event PropertyChangedEventHandler PropertyChanged;
-
 		public string Email
 		{
 			get { return email; }
@@ -31,8 +28,22 @@ namespace MBlogApp.ViewModels
 				}
 			}
 		}
+		private string errorMessage;
+		public string ErrorMessage
+		{
+			get { return errorMessage; }
+			set
+			{
+				if (value != errorMessage)
+				{
+					errorMessage = value;
+					OnPropertyChanged();
+				}
+			}
+		}
 		public ForgotPasswordPageViewModel()
 		{
+			errorMessage = "";
 			ForgotCommand = new Command(GotoForgotPage);
 			RegisterCommand = new Command(GotoRegisterPage);
 			BackPageCommand = new Command(BackPage);
@@ -60,7 +71,20 @@ namespace MBlogApp.ViewModels
 		//}
 		private async void SendEmailPage()
 		{
-			await App.Current.MainPage.Navigation.PushAsync(new ForgotPasswordCompletePage());
+
+			string error = "Email wrong!";
+			ErrorMessage = error;
+			if (Email == "te@te.test")
+			{
+				ErrorMessage = "";
+				await App.Current.MainPage.Navigation.PushAsync(new ForgotPasswordCompletePage());
+			}
+			else
+			{
+				ErrorMessage = error;
+			}
+			ErrorMessage = error;
+			
 		}
 		//protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
 		//{

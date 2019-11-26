@@ -8,7 +8,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <Color x:Key="P_PimaryColor">#E7EFEF</Color>
-            <Color x:Key="P_PimaryGreenColor">#E7EFEF</Color>
+            <Color x:Key="P_RedColor">Red</Color>
             <Color x:Key="P_PimaryMainColor">#1A6B69</Color>
             <Color x:Key="P_WhiteColor">#FFFFFF</Color>
             <Style TargetType="Frame" >
