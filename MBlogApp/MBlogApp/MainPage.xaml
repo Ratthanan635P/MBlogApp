@@ -22,15 +22,13 @@
         <Label  x:Name="LbPassword"  Text="Welcome to Xamarin.Forms!" 
                HorizontalOptions="Center"
           />
-        <forms:AnimationView 
+        <!--<forms:AnimationView 
 	                    x:Name="animationView" 
 	                    Animation="WelcomeMBlog.json" 
 	                    Loop="True"
 	                    AutoPlay="True"
-                        HeightRequest="180"                        
-                        VerticalOptions="CenterAndExpand" 
-	                    HorizontalOptions="CenterAndExpand" 
-	                    />
+                        HeightRequest="180"                                               
+	                    />-->
         <Button Text="BACK " 
                         TextColor="{StaticResource P_PimaryMainColor}"
                       
