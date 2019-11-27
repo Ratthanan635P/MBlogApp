@@ -27,7 +27,8 @@
 	                    Animation="WelcomeMBlog.json" 
 	                    Loop="True"
 	                    AutoPlay="True"
-                        HeightRequest="180"                                               
+                        HeightRequest="180" 
+        
 	                    />-->
         <Button Text="BACK " 
                         TextColor="{StaticResource P_PimaryMainColor}"
