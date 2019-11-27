@@ -33,10 +33,11 @@
                    />
                 <Label  
                      x:Name="LbErrorMessage"
-                   TextColor="{StaticResource P_RedColor}"
-                   Margin="40,0"
+                     TextColor="{StaticResource P_RedColor}"
+                    FontAttributes="None"                   
+                     Margin="40,0"
                      Text="{Binding ErrorMessage}"
-                   IsVisible="{Binding Source={x:Reference LbErrorMessage},
+                     IsVisible="{Binding Source={x:Reference LbErrorMessage},
                                     Path=Text,
                                     Converter={StaticResource dataHasError}}"/>
                 <Frame x:Name="fEmail">
@@ -47,8 +48,9 @@
                              x:Name="EntryEmail"
                              IsPassword="False"
                              Margin="10,0"
-                            Text="{Binding Email}"
+                             Text="{Binding Email}"
                              ReturnType="Next"
+                            TextColor="{StaticResource P_EntryTextColor}"
                             Focused="EntryEmail_Focused"
                             Unfocused="EntryEmail_Unfocused"/>
                     </StackLayout>
@@ -67,6 +69,7 @@
                              Margin="10,0"
                             Text="{Binding Password}" 
                                 ReturnType="Next"
+                            TextColor="{StaticResource P_EntryTextColor}"
                             Focused="EntryPassword_Focused"
                             Unfocused="EntryPassword_Unfocused"/>
                     </StackLayout>
@@ -84,6 +87,7 @@
                             IsPassword="True"
                              Margin="10,0"
                              Text="{Binding ConfirmPassword}" 
+                            TextColor="{StaticResource P_EntryTextColor}"
                                 ReturnType="Done"
                             Focused="EntryConfirmPassword_Focused"
                             Unfocused="EntryConfirmPassword_Unfocused"/>

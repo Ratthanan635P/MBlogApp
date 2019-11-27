@@ -24,9 +24,12 @@
           />
         <forms:AnimationView 
 	                    x:Name="animationView" 
-	                    Animation="WelcomeMblog.json" 
+	                    Animation="WelcomeMBlog.json" 
 	                    Loop="True"
 	                    AutoPlay="True"
+                        HeightRequest="180"                        
+                        VerticalOptions="CenterAndExpand" 
+	                    HorizontalOptions="CenterAndExpand" 
 	                    />
         <Button Text="BACK " 
                         TextColor="{StaticResource P_PimaryMainColor}"
