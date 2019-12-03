@@ -35,7 +35,8 @@ namespace MBlogApp.ViewModels
 		//}
 		private async void GotoLogInPage()
 		{
-			await App.Current.MainPage.Navigation.PushAsync(new LogInPage());
+			await App.Current.MainPage.Navigation.PopToRootAsync();
+
 		}
 	}
 }

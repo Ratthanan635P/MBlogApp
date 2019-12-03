@@ -40,71 +40,7 @@ namespace MBlogApp.ViewModels
 		//		}
 		//	}
 		//}
-		private string errorMessage;
-		public string ErrorMessage
-		{
-			get { return errorMessage; }
-			set
-			{
-				if (value != errorMessage)
-				{
-					errorMessage = value;
-					OnPropertyChanged();
-				}
-			}
-		}
-		private string email;
-		public string Email
-		{
-			get { return email; }
-			set
-			{
-				if (value != email)
-				{
-					email = value;
-					OnPropertyChanged();
-				}
-			}
-		}
-		private string password;
-		public string Password
-		{
-			get { return password; }
-			set
-			{
-				if (value != password)
-				{
-					password = value;
-					OnPropertyChanged();
-				}
-			}
-		}
-		private string confirmPassword;
-		public string ConfirmPassword
-		{
-			get { return confirmPassword; }
-			set
-			{
-				if (value != confirmPassword)
-				{
-					confirmPassword = value;
-					OnPropertyChanged();
-				}
-			}
-		}
-		private bool loading;
-		public bool Loading
-		{
-			get { return loading; }
-			set
-			{
-				if (value != loading)
-				{
-					loading = value;
-					OnPropertyChanged();
-				}
-			}
-		}
+		
 		public RegisterPageViewModel()
 		{
 			RegisterModel = new RegisterModel();
@@ -149,7 +85,7 @@ namespace MBlogApp.ViewModels
 
 			//Call Api register Check email and Password
 
-			//await Task.Delay(3000);
+			await Task.Delay(3000);
 			
 			if (error == "")
 			{

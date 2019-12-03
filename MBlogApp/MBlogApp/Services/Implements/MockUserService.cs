@@ -20,7 +20,7 @@ namespace MBlogApp.Services.Implements
 				{
 					Id = i,
 					Email = "TEST" + i + "@TEST.TEST",
-					Password = "Password0"+i
+					Password = "Gg123456789"
 				}); 
 			}
 		}

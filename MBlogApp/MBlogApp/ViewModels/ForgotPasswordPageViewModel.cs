@@ -16,45 +16,45 @@ namespace MBlogApp.ViewModels
 		public ICommand SendEmailCommand { get; set; }
 		public ICommand ForgotCommand { get; set; }
 		public ICommand BackPageCommand { get; set; }
-		private string email="";
-		public string Email
-		{
-			get { return email; }
-			set
-			{
-				if (value != email)
-				{
-					email = value;
-					OnPropertyChanged();
-				}
-			}
-		}
-		private string errorMessage;
-		public string ErrorMessage
-		{
-			get { return errorMessage; }
-			set
-			{
-				if (value != errorMessage)
-				{
-					errorMessage = value;
-					OnPropertyChanged();
-				}
-			}
-		}
-		private bool loading;
-		public bool Loading
-		{
-			get { return loading; }
-			set
-			{
-				if (value != loading)
-				{
-					loading = value;
-					OnPropertyChanged();
-				}
-			}
-		}
+		//private string email="";
+		//public string Email
+		//{
+		//	get { return email; }
+		//	set
+		//	{
+		//		if (value != email)
+		//		{
+		//			email = value;
+		//			OnPropertyChanged();
+		//		}
+		//	}
+		//}
+		//private string errorMessage;
+		//public string ErrorMessage
+		//{
+		//	get { return errorMessage; }
+		//	set
+		//	{
+		//		if (value != errorMessage)
+		//		{
+		//			errorMessage = value;
+		//			OnPropertyChanged();
+		//		}
+		//	}
+		//}
+		//private bool loading;
+		//public bool Loading
+		//{
+		//	get { return loading; }
+		//	set
+		//	{
+		//		if (value != loading)
+		//		{
+		//			loading = value;
+		//			OnPropertyChanged();
+		//		}
+		//	}
+		//}
 		public ForgotPasswordPageViewModel()
 		{
 			errorMessage = "";

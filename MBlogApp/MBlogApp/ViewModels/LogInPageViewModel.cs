@@ -26,32 +26,32 @@ namespace MBlogApp.ViewModels
 				}
 			}
 		}
-		private string errorMessage;
-		public string ErrorMessage
-		{
-			get { return errorMessage; }
-			set
-			{
-				if (value != errorMessage)
-				{
-					errorMessage = value;
-					OnPropertyChanged();
-				}
-			}
-		}
-		private bool loading;
-		public bool Loading
-		{
-			get { return loading; }
-			set
-			{
-				if (value != loading)
-				{
-					loading = value;
-					OnPropertyChanged();
-				}
-			}
-		}
+		//private string errorMessage;
+		//public string ErrorMessage
+		//{
+		//	get { return errorMessage; }
+		//	set
+		//	{
+		//		if (value != errorMessage)
+		//		{
+		//			errorMessage = value;
+		//			OnPropertyChanged();
+		//		}
+		//	}
+		//}
+		//private bool loading;
+		//public bool Loading
+		//{
+		//	get { return loading; }
+		//	set
+		//	{
+		//		if (value != loading)
+		//		{
+		//			loading = value;
+		//			OnPropertyChanged();
+		//		}
+		//	}
+		//}
 		public ICommand RegisterCommand { get; set; }
 		public ICommand ForgotCommand { get; set; }
 		public ICommand LogInCommand { get; set; }
@@ -105,7 +105,7 @@ namespace MBlogApp.ViewModels
 				if (result.StatusRespond == "200")
 				{
 					ErrorMessage = "";					
-					//await Task.Delay(3000);
+					await Task.Delay(1500);
 					Loading = false;
 					DataUserModel dataUser = new DataUserModel()
 					{ 
@@ -117,7 +117,7 @@ namespace MBlogApp.ViewModels
 				}
 				else
 				{
-					//await Task.Delay(3000);
+					await Task.Delay(1500);
 					error = result.ErrorMessage;
 					ErrorMessage = error;
 					Loading = false;
@@ -125,7 +125,7 @@ namespace MBlogApp.ViewModels
 			}
 			else
 			{
-				//await Task.Delay(1500);
+				await Task.Delay(1500);
 				ErrorMessage = error;
 				Loading = false;
 			}

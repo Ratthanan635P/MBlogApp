@@ -34,7 +34,8 @@
                 <Label  
                      x:Name="LbErrorMessage"
                      TextColor="{StaticResource P_RedColor}"
-                    FontAttributes="None"                   
+                    FontAttributes="None" 
+                    FontSize="Small"
                      Margin="40,0"
                      Text="{Binding ErrorMessage}"
                      IsVisible="{Binding Source={x:Reference LbErrorMessage},

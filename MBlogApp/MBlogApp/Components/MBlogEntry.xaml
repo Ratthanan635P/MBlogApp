@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Name="thisView"
+             x:Class="MBlogApp.Components.MBlogEntry">
+    <!--<Frame BindingContext="{x:Reference thisView}">
+        <StackLayout>
+            <Label Text="{Binding TextLabel}" />
+            <Entry Text="{Binding TextEntry}" />
+        </StackLayout>
+    </Frame>-->
+
+    <Frame BindingContext="{x:Reference thisView}" >
+        <StackLayout Orientation="Vertical" Spacing="0">
+            <Label Text="{Binding TextLabel}"
+                   Margin="10,0"
+                   />
+            <Entry IsPassword="{Binding PasswordEntry}"
+                   Margin="10,0"
+                   ReturnType="Next" 
+                   TextColor="Black"
+                   Text="{Binding TextEntry}"  
+                   Placeholder="{Binding Placeholder}"
+                   />
+        </StackLayout>
+    </Frame>
+</ContentView>

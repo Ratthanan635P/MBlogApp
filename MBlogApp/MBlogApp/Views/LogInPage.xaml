@@ -6,6 +6,7 @@
              xmlns:viewmodel="clr-namespace:MBlogApp.ViewModels"
              xmlns:local="clr-namespace:MBlogApp.Converters"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:components="clr-namespace:MBlogApp.Components"
              mc:Ignorable="d"
              x:Class="MBlogApp.Views.LogInPage"
              NavigationPage.HasNavigationBar="False"
@@ -36,6 +37,7 @@
                 <Label 
                     x:Name="LbErrorMessage"
                     FontAttributes="None"
+                    FontSize="Small"
                    TextColor="{StaticResource P_RedColor}"
                    Margin="40,0"
                    WidthRequest="250"
@@ -43,7 +45,7 @@
                    IsVisible="{Binding Source={x:Reference LbErrorMessage},
                                     Path=Text,
                                     Converter={StaticResource dataHasError}}"/>
-                    <Frame x:Name="fEmail" IsVisible="False">
+            <!--<Frame x:Name="fEmail" IsVisible="False">
                     <StackLayout Orientation="Vertical" Spacing="0">
                     <Label Text="EMAIL"
                             Margin="10,0"/>
@@ -56,12 +58,20 @@
                            Text="{Binding LogInModel.Email}"
                             />
                 </StackLayout>
-            </Frame>
-            <Label Text="ErrorPasswordMessage" 
+            </Frame>-->
+                    <components:MBlogEntry  x:Name="fEmail"
+                        TextEntry="{Binding LogInModel.Email}"  
+                                           TextLabel="Email" 
+                                           PasswordEntry="False"
+                                           Placehoder="Email" 
+                                           
+                                           />
+                    <Label Text="ErrorPasswordMessage" 
                    TextColor="Red"
                     Margin="40,0"
                    IsVisible="False"/>
-                    <Frame x:Name="fPassword" IsVisible="False">
+                 
+                    <!--<Frame x:Name="fPassword" IsVisible="False">
                 <StackLayout Orientation="Vertical" Spacing="0">
                     <Label Text="PASSWORD" 
                            Margin="10,0"/>
@@ -74,8 +84,14 @@
                                 Unfocused="EntryPassword_Unfocused"
                           />
                 </StackLayout>
-            </Frame>
-                <Button x:Name="BtnLogIn"
+            </Frame>-->
+                    <components:MBlogEntry  x:Name="fPassword"
+                        TextEntry="{Binding LogInModel.PassWord}"  
+                                           TextLabel="Password" 
+                                           PasswordEntry="True"
+                                           Placehoder="Password"                                           
+                                           />
+                    <Button x:Name="BtnLogIn"
                         Text="Log In" 
                         HeightRequest="65"
                         Margin="40,20,40,5"
@@ -86,12 +102,12 @@
                     <Button.Triggers>
                         <MultiTrigger TargetType="Button">
                             <MultiTrigger.Conditions>
-                                <BindingCondition Binding="{Binding Source={x:Reference EntryEmail},
-                              Path=Text,
+                                <BindingCondition Binding="{Binding Source={x:Reference fEmail},
+                              Path=TextEntry,
                               Converter={StaticResource dataHasBeenEntered}}"
                           Value="true" />
-                                <BindingCondition Binding="{Binding Source={x:Reference EntryPassword},
-                              Path=Text.Length,
+                                    <BindingCondition Binding="{Binding Source={x:Reference fPassword},
+                              Path=TextEntry.Length,
                               Converter={StaticResource dataHasPassword}}"
                           Value="true" />
                             </MultiTrigger.Conditions>
@@ -125,7 +141,7 @@
                     </Label.GestureRecognizers>
                 </Label>
         </StackLayout>
-                <StackLayout BackgroundColor="LightGray" Opacity="0.8" IsVisible="{Binding Loading}">
+                <!--<StackLayout BackgroundColor="LightGray" Opacity="0.8" IsVisible="{Binding Loading}">
                     <forms:AnimationView 
 	                    x:Name="animationView" 
 	                    Animation="loadingdot2.json" 
@@ -133,7 +149,8 @@
 	                    AutoPlay="True"
 	                    VerticalOptions="CenterAndExpand" 
 	                    HorizontalOptions="CenterAndExpand" />
-                </StackLayout>
+                </StackLayout>-->
+                <components:MBlogLoading Loading="{Binding Loading}"/>
             </Grid>
         </ScrollView>
     </ContentPage.Content>
